@@ -1,0 +1,37 @@
+<%- include('header.ejs') -%>
+
+<div class="login-container">
+    <h2>Add new users</h2>
+    <div style="height: 50px;">
+        <p style="color: red;">123</p>  
+    </div>
+    <form class="login-form" action="new-user" method="post">
+        <div class="form-group">
+            <!-- <label for="Mobile">Mobile:</label> -->
+            <input placeholder="mobile" type="text" id="Mobile" name="mobile" required>
+        </div>
+        <div class="form-group">
+            <!-- <label for="name">Name:</label> -->
+            <input placeholder="name" type="name" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <!-- <label for="email">Email:</label> -->
+            <input placeholder="email" type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <!-- <label for="password">Password:</label> -->
+            <input placeholder="password" type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="login-button">Add user</button>
+    </form><br>
+    <a href="/dashboard">Back</a>
+
+</div>
+
+
+
+
+<%- include('footer.ejs') -%>
+
+
+

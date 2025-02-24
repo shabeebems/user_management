@@ -1,0 +1,24 @@
+<%- include('header.ejs') -%>
+
+
+
+<div class="login-container">
+    <h2>Admin home</h2>
+    <div style="height: 50px;">
+        <% if (typeof message !== 'undefined') {%>
+            <p style="color: red;"><%= message %></p>  
+        <% } %>
+    </div>
+    <form class="login-form" action="dashboard">
+        <button type="submit" class="login-button">Dashboard</button>
+    </form>
+    <br>
+    <form class="login-form" action="admin-logout" method="post">
+        <button type="submit" class="login-button">Logout</button>
+    </form>
+
+    <!-- Edit session -->
+    <br>
+</div>
+
+<%- include('footer.ejs') -%>

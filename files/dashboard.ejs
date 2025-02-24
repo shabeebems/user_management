@@ -1,0 +1,175 @@
+<%- include('header.ejs') -%>
+
+<style>
+    body {
+        /* background: linear-gradient(to right, #e73c7e, #f77737); */
+        color: #fff;
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container-fluid {
+        margin: 20px auto;
+        max-width: 1200px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    a {
+        color: #00c3ff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    a:hover {
+        text-decoration: underline;
+        color: #f0f0f0;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    thead {
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    thead th {
+        padding: 10px;
+        text-align: left;
+        text-transform: uppercase;
+        font-weight: bold;
+        border-bottom: 2px solid #fff;
+    }
+
+    tbody tr {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    tbody td {
+        padding: 10px;
+        vertical-align: middle;
+    }
+
+    tbody tr:nth-child(even) {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    button {
+        background: #007bff;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    button:hover {
+        background: #0056b3;
+    }
+
+    .btn-primary {
+        background: #ff5733;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        color: #fff;
+        text-transform: uppercase;
+        transition: background 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background: #c70039;
+    }
+
+    form {
+        display: inline-block;
+        margin: 0;
+    }
+
+    td[colspan="3"] {
+        text-align: center;
+        color: #ffcccc;
+        font-style: italic;
+    }
+</style>
+
+
+<div class="container-fluid">
+
+
+
+    <h1>Dashboard</h1>
+      
+    <br><br>
+    
+    <form action="add-new-user">
+        <button class="btn btn-primary float-right mb-2">Add New User</button>
+    </form>
+    
+    <table width="100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%
+            if(data.length > 0) {
+               for(let i = 0; i < data.length; i++) {
+                %>
+                <tr>
+                    <td><%= data[i].name %></td>
+                    <td><%= data[i].email %></td>
+                    <td><%= data[i].mobile %></td>
+                    <td>
+                        <a href="edit-user?email=<%= data[i].email%>">Edit</a>
+                        <a href="delete-user?email=<%= data[i].email%>">Delete</a>
+                    </td>
+                </tr>
+                <%
+               }
+            } else {
+                %>
+                <tr>
+                    <td colspan="3">Users Not Found</td>
+                </tr>
+                <%
+            }
+            %>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    
+        
+        <form action="/back-to-home" method="post"><button>Go back to home</button></form>
+    
+    
+    </div>      
+
+
+
+
+<%- include('footer.ejs') -%>

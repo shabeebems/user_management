@@ -1,0 +1,27 @@
+
+<%- include('header.ejs') -%>
+
+    <div class="login-container">
+
+    <h1>Edit user</h1>
+    <div style="height: 50px;">
+        <% if (typeof message !== 'undefined') {%>
+            <p style="color: red;"><%= message %></p>  
+        <% } %>
+        </div>
+
+    <form class="login-form" action="update-user?email=<%= userData.email %>" method="post">
+
+        <input type="name" name="name" placeholder="Enter name" value="<%= userData.name %>">
+        <br><br>
+        <input type="email" name="email" placeholder="Enter Email"value="<%= userData.email %>">
+        <br><br>
+        <input type="number" name="mobile" placeholder="Enter mobile number"value="<%= userData.mobile %>">
+        <br><br>
+        <button class="login-button">Update user</button>
+    </form><br>
+        <a href="/dashboard">Back</a>
+    </div>
+
+
+<%- include('footer.ejs') -%>    

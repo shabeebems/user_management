@@ -1,0 +1,54 @@
+<%- include('header.ejs') -%>
+
+<div class="login-container">
+    <h2>Login</h2>
+    <div style="height: 50px;">
+        <p style="color: red;" id="respofecth"></p>  
+    </div>
+    <form class="login-form" id="form">
+        <div class="form-group">
+            <!-- <label for="email">Email:</label> -->
+            <input placeholder="email" type="email" id="email" name="email">
+        </div>
+        <div class="form-group">
+            <!-- <label for="password">Password:</label> -->
+            <input placeholder="password" type="password" id="password" name="password">
+        </div>
+        <button type="submit" class="login-button">Login</button>
+    </form><br>
+    
+    <!-- Signup Section -->
+    <div class="signup-section">
+        <p>Don't have an account? <a href="/signup" class="signup-link">Sign up here</a></p>
+    </div>
+    
+    <!-- Admin Page Link -->
+    <div class="admin-link">
+        <a href="admin">Go to Admin Page</a>
+    </div>
+</div>
+
+<script>
+	const form = document.getElementById('form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+        console.log(email, password)
+        fetch(`/login-check?password=${password}&&email=${email}`)
+        .then(res => res.json())
+        .then(res => {
+            if(res.success) {
+                window.location.href = '/home';
+            } else {
+                document.getElementById('respofecth').innerText = res.message
+                function hideParagraph() {
+                    document.getElementById('respofecth').innerHTML = ''
+                }
+                setTimeout(hideParagraph, 3000)
+            }
+        })        
+    })
+</script>
+
+<%- include('footer.ejs') -%>

@@ -1,0 +1,11 @@
+<%- include('header.ejs') -%>
+
+<div class="login-container">
+    <h2>Welcome <%= data.name %> !</h2>
+    <p style="color: red;"><%= data.email %></p><br>
+    <form action="login" method="post">
+        <button type="submit" class="login-button">Logout</button>
+    </form>    
+</div>
+
+<%- include('footer.ejs') -%>    
